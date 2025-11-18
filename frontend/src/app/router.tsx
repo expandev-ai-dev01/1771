@@ -5,6 +5,8 @@ import { LoadingSpinner } from '@/core/components/LoadingSpinner';
 import { AppLayout } from '@/pages/layouts';
 
 const HomePage = lazy(() => import('@/pages/Home'));
+const ProductsPage = lazy(() => import('@/pages/Products'));
+const StockMovementsPage = lazy(() => import('@/pages/StockMovements'));
 const NotFoundPage = lazy(() => import('@/pages/NotFound'));
 
 const router = createBrowserRouter([
@@ -21,7 +23,22 @@ const router = createBrowserRouter([
           </Suspense>
         ),
       },
-      // Feature routes will be added here
+      {
+        path: 'products',
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <ProductsPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'stock-movements',
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <StockMovementsPage />
+          </Suspense>
+        ),
+      },
     ],
   },
   {
